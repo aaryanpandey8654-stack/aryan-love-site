@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#intro, #main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.glow {
+    font-size: 50px;
+    color: #ff4d6d;
+    text-shadow: 0 0 20px #ff4d6d;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.gallery img {
+    width: 340px;
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #ff4d6d;
+    margin: 20px;
+    transition: opacity 0.8s ease;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background: gray;
+    color: white;
+    position: relative;
+}
