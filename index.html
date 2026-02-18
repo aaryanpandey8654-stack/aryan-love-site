@@ -1,39 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Aryan ❤️ Nidhi</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Surprise for Nidhu ❤️</title>
+<style>
+body{
+  margin:0; font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(-45deg,#000010,#1a001a,#330033,#000010);
+  background-size:400% 400%; animation:bgMove 12s ease infinite;
+  color:white; text-align:center; overflow-x:hidden; min-height:100vh;
+}
+@keyframes bgMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+body::before{
+  content:""; position:fixed; width:100%; height:100%;
+  background:radial-gradient(circle,rgba(255,0,150,0.2),transparent 60%);
+  animation:beat 2s infinite; z-index:-1;
+}
+@keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+
+/* Buttons */
+button{
+  padding:14px 36px; border-radius:50px; border:none;
+  background:linear-gradient(45deg,#ff0055,#ff66a3); color:white; font-size:18px; cursor:pointer; transition:0.4s; margin-top:15px;
+}
+button:hover{transform:scale(1.2); box-shadow:0 0 40px #ff0055;}
+
+/* HIDE/SHOW PAGES */
+.page{display:none; padding:40px 20px; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
+
+/* Page 1 Heading + Button Effects */
+#page1 h1{opacity:0; transform:scale(0.8); animation:fadeScale 1s forwards 0.3s;}
+@keyframes fadeScale{to{opacity:1; transform:scale(1);}}
+#unlockBtn{animation:pulseBtn 2s infinite alternate;}
+@keyframes pulseBtn{from{transform:scale(1); box-shadow:0 0 20px #ff66aa;} to{transform:scale(1.1); box-shadow:0 0 50px #ff0055;}}
+
+/* CARD */
+.card-container{perspective:1000px; width:80%; max-width:400px; height:540px; margin:20px auto; position:relative;}
+.card{width:100%; height:100%; transform-style: preserve-3d; transition: transform 1s; position:relative;}
+.card.flipped{transform:rotateY(180deg);}
+.card-front,.card-back{position:absolute; width:100%; height:100%; border-radius:25px; backface-visibility:hidden; box-shadow:0 0 60px rgba(255,0,100,0.7),0 0 120px rgba(255,0,255,0.4); overflow:hidden;}
+.card-front img,.card-back img{width:100%; height:100%; object-fit:contain; border-radius:20px;}
+.card-back{transform:rotateY(180deg);}
+.card:hover{transform:rotateY(5deg); transition:transform 0.6s;}
+
+/* Final text */
+.final-text{margin-top:25px; font-size:28px; opacity:0; transform:translateY(20px) scale(0.8); transition:1s;}
+.final-text.show{opacity:1; transform:translateY(0) scale(1); animation:textGlowShake 2s infinite;}
+@keyframes textGlowShake{
+  0%{text-shadow:0 0 10px pink; transform:translateX(0);}
+  25%{text-shadow:0 0 25px pink; transform:translateX(-2px);}
+  50%{text-shadow:0 0 35px red; transform:translateX(2px);}
+  75%{text-shadow:0 0 25px pink; transform:translateX(-1px);}
+  100%{text-shadow:0 0 10px pink; transform:translateX(0);}
+}
+
+/* Question Page */
+#questionPage h2{font-size:32px; margin-bottom:30px; text-shadow:0 0 15px pink; animation:bounceTitle 1.2s infinite alternate;}
+@keyframes bounceTitle{from{transform:translateY(0);} to{transform:translateY(-10px);}}
+.option{padding:16px 40px; border-radius:50px; border:none; background:linear-gradient(45deg,#ff00aa,#ff66cc); color:white; font-size:22px; cursor:pointer; margin:12px; transition:0.4s; animation:bounceBtn 1.5s infinite alternate;}
+@keyframes bounceBtn{from{transform:scale(1);} to{transform:scale(1.05);}}
+#absoluteYes{animation:absolutePulse 1.5s infinite alternate, glowAbs 2s infinite alternate;}
+@keyframes absolutePulse{from{transform:scale(1);} to{transform:scale(1.2);}}
+@keyframes glowAbs{from{box-shadow:0 0 20px #ff66cc;} to{box-shadow:0 0 60px #ff00aa;}}
+
+/* Love Pages */
+#yesPage h1, #absoluteYesPage h1{animation:headingGlow 2s infinite alternate;}
+@keyframes headingGlow{from{text-shadow:0 0 15px pink;} to{text-shadow:0 0 50px red;}}
+#yesPage p, #absoluteYesPage p{opacity:0; transform:translateY(20px); animation:paraFade 1s forwards 0.5s;}
+@keyframes paraFade{to{opacity:1; transform:translateY(0);}}
+p{max-width:600px; text-align:center; font-size:20px; line-height:1.6; margin-top:20px;}
+</style>
 </head>
 <body>
 
-<canvas id="stars"></canvas>
-
-<div id="intro">
-    <h1 class="glow">Aryan ❤️ Nidhi</h1>
-    <button id="enterBtn">Enter 💖</button>
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+  <h1>Mere pass tumhare liye ek surprise hai ❤️</h1>
+  <button id="unlockBtn">Unlock Surprise 🎉</button>
 </div>
 
-<div id="main" class="hidden">
-
-    <h2 id="typewriter"></h2>
-
-    <div class="gallery">
-        <img id="slide" src="poem1.png" alt="Poetry">
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="card-container">
+    <div class="card" id="card">
+      <div class="card-front">
+        <img src="poem.jpg" alt="Poem Front">
+      </div>
+      <div class="card-back">
+        <img src="poem1.png" alt="Poem Back">
+      </div>
     </div>
-
-    <button id="proposalBtn">I Want To Ask You Something 💍</button>
-
-    <div id="proposal" class="hidden">
-        <h2>Will You Stay With Me? ❤️</h2>
-        <button id="yesBtn">YES 💖</button>
-        <button id="noBtn">Absolutely Yes 💖</button>
-    </div>
-
+  </div>
+  <div class="final-text" id="finalText">Each word is for Nidhu 💖</div>
+  <button id="flipBtn">Flip Card 🔄</button>
+  <br>
+  <button id="toQuestionBtn">Will you stay with me forever? 💌</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script src="script.js"></script>
+<!-- PAGE 3 -->
+<div class="page" id="questionPage">
+  <h2>Will you stay with me forever?</h2>
+  <button class="option" id="yesBtn">Yes</button>
+  <button class="option" id="absoluteYes">Absolutely Yes ❤️</button>
+</div>
+
+<!-- PAGE 4a -->
+<div class="page" id="yesPage">
+  <h1>Aryan loves Nidhu forever ❤️</h1>
+  <p>I'll always take care of you Nidhu. At every moment of life, I will make you laugh and support you, and always give you love and care.</p>
+</div>
+
+<!-- PAGE 4b -->
+<div class="page" id="absoluteYesPage">
+  <h1>Aryan loves Nidhu forever ❤️</h1>
+  <p>Nidhu, you are the most beautiful chapter of my life. I’ll always be loyal, take care of you in every situation, give you all the happiness of the world, never let you cry, always make you smile. Lots of love to you Nidhu, my orchid 🌸</p>
+</div>
+
+<script>
+// SHOW ONLY PAGE1 ON LOAD
+document.addEventListener("DOMContentLoaded",()=>{showPage('page1');});
+
+// NAVIGATION
+function showPage(pageId){
+  document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+  document.getElementById(pageId).style.display='flex';
+}
+
+// PAGE1 -> PAGE2
+document.getElementById("unlockBtn").onclick=function(){
+  showPage('page2'); 
+  setTimeout(()=>{document.getElementById("finalText").classList.add("show");},400);
+};
+
+// FLIP CARD
+const card=document.getElementById("card");
+document.getElementById("flipBtn").onclick=function(){ card.classList.toggle("flipped"); };
+
+// PAGE2 -> PAGE3
+document.getElementById("toQuestionBtn").onclick=function(){ showPage('questionPage'); };
+
+// PAGE3 -> PAGE4
+document.getElementById("yesBtn").onclick=function(){ showPage('yesPage'); };
+document.getElementById("absoluteYes").onclick=function(){ showPage('absoluteYesPage'); };
+</script>
 
 </body>
 </html>
